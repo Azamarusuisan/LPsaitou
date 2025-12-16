@@ -44,37 +44,82 @@ if (form) {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // フォームデータの取得
+        // エラーリセット
+        document.querySelectorAll('.error-message').forEach(el => el.remove());
+        document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+        
+        let isValid = true;
         const formData = {
-            company: document.getElementById('company').value,
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            budget: document.getElementById('budget').value,
-            message: document.getElementById('message').value
+            company: document.getElementById('company'),
+            name: document.getElementById('name'),
+            email: document.getElementById('email'),
+            phone: document.getElementById('phone'),
+            budget: document.getElementById('budget'),
+            inquiry_type: document.getElementById('inquiry_type'),
+            privacy: document.querySelector('input[name="privacy"]')
         };
         
-        // バリデーション
-        if (!formData.company || !formData.name || !formData.email) {
-            alert('必須項目を入力してください。');
-            return;
+        // 必須チェックヘルパー関数
+        const showError = (element, message) => {
+            const errorDiv = document.createElement('span');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = message;
+            element.classList.add('error');
+            // チェックボックスの場合は親要素の末尾に追加
+            if (element.type === 'checkbox') {
+                 element.closest('.checkbox-label').parentElement.appendChild(errorDiv);
+            } else {
+                element.parentElement.appendChild(errorDiv);
+            }
+            isValid = false;
+        };
+
+        // バリデーション実行
+        if (!formData.company.value.trim()) showError(formData.company, '会社名を入力してください');
+        if (!formData.name.value.trim()) showError(formData.name, 'お名前を入力してください');
+        
+        if (!formData.email.value.trim()) {
+            showError(formData.email, 'メールアドレスを入力してください');
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.value)) {
+            showError(formData.email, '正しいメールアドレス形式で入力してください');
         }
         
-        // メールアドレスのバリデーション
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(formData.email)) {
-            alert('正しいメールアドレスを入力してください。');
-            return;
+        if (!formData.budget.value) showError(formData.budget, '予算を選択してください');
+        if (!formData.inquiry_type.value) showError(formData.inquiry_type, 'お問い合わせ種別を選択してください');
+        if (!formData.privacy.checked) showError(formData.privacy, 'プライバシーポリシーへの同意が必要です');
+
+        if (isValid) {
+            // 送信成功UIへ切り替え
+            const formContainer = form.parentElement; // .container inside .contact-form or similar
+            // フォーム自体を非表示にしてメッセージを表示、あるいはフォームの中身を書き換え
+            const successHTML = `
+                <div class="success-message-container">
+                    <span class="success-icon">✓</span>
+                    <h3 class="success-title">送信が完了しました</h3>
+                    <p class="success-text">
+                        お問い合わせありがとうございます。<br>
+                        担当者より3営業日以内にご連絡いたします。<br>
+                        ご入力いただいたメールアドレスへ確認メールをお送りしました。
+                    </p>
+                </div>
+            `;
+            
+            // フェードアウト効果などをつけるならここで
+            form.style.display = 'none';
+            // タイトルなども非表示にする場合
+            const title = document.querySelector('.form-title');
+            const subtitle = document.querySelector('.form-subtitle');
+            if(title) title.style.display = 'none';
+            if(subtitle) subtitle.style.display = 'none';
+
+            formContainer.insertAdjacentHTML('beforeend', successHTML);
+            
+            // 実際はここでAPI送信などを行う
+            console.log('Form submitted successfully');
+            
+            // スクロール位置を調整（フォーム位置へ）
+            document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-        
-        // 送信処理（実際の実装では、サーバーに送信する）
-        console.log('フォーム送信:', formData);
-        
-        // 送信成功メッセージ
-        alert('お問い合わせありがとうございます。\n担当者より3営業日以内にご連絡いたします。');
-        
-        // フォームリセット
-        form.reset();
     });
 }
 

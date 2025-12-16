@@ -1,5 +1,7 @@
 /* リセットとベーススタイル */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -105,7 +107,7 @@ body {
 }
 
 .lp-image {
-    width: calc(100% + 10px);
+    width: 120%;
     height: auto;
     display: block;
     max-width: none;
@@ -114,10 +116,16 @@ body {
     vertical-align: top;
     border: none;
     outline: none;
-    margin: 0 -5px;
+    margin: 0 -10%;
     padding: 0;
     font-size: 0;
     line-height: 0;
+}
+
+/* お悩みセクションの画像調整（青枠削除のため強めにクロップ） */
+.section-problems .lp-image {
+    width: 120%;
+    margin: 0 -10%;
 }
 
 /* CTAボタンリンク */
@@ -357,26 +365,36 @@ body {
         max-width: 700px;
         padding: 0 30px;
     }
-    
+
     /* 画像は画面幅いっぱい（ただし元の解像度以上に拡大しない） */
     .lp-image-wrapper {
         width: 100%;
         max-width: 2048px;
         margin: 0 auto;
+        overflow: hidden;
+        /* 念のため明示 */
     }
-    
+
     .lp-image {
-        width: 100%;
-        max-width: 2048px;
+        width: 102%;
+        max-width: none;
+        /* 2048px制限を解除してクロップ可能にする */
+        margin: 0 -1%;
     }
-    
+
+    /* お悩みセクションの画像調整（デスクトップは強クロップ不要なのでリセット） */
+    .section-problems .lp-image {
+        width: 102%;
+        margin: 0 -1%;
+    }
+
     .cta-button-link {
         height: 70px;
         width: 50%;
         max-width: 500px;
         bottom: 6%;
     }
-    
+
     /* ステルスボタン（PC用） */
     .stealth-buttons-grid {
         display: block;
@@ -388,7 +406,7 @@ body {
         z-index: 15;
         pointer-events: none;
     }
-    
+
     .stealth-btn {
         display: block;
         position: absolute;
@@ -399,7 +417,7 @@ body {
         border: none;
         outline: none;
     }
-    
+
     /* 1行目のボタン位置 */
     .stealth-btn-1 {
         top: 18%;
@@ -407,28 +425,28 @@ body {
         width: 21%;
         height: 10%;
     }
-    
+
     .stealth-btn-2 {
         top: 18%;
         left: 27%;
         width: 21%;
         height: 10%;
     }
-    
+
     .stealth-btn-3 {
         top: 18%;
         left: 50%;
         width: 21%;
         height: 10%;
     }
-    
+
     .stealth-btn-4 {
         top: 18%;
         left: 73%;
         width: 21%;
         height: 10%;
     }
-    
+
     /* 2行目のボタン位置 */
     .stealth-btn-5 {
         top: 32%;
@@ -436,28 +454,28 @@ body {
         width: 21%;
         height: 10%;
     }
-    
+
     .stealth-btn-6 {
         top: 32%;
         left: 27%;
         width: 21%;
         height: 10%;
     }
-    
+
     .stealth-btn-7 {
         top: 32%;
         left: 50%;
         width: 21%;
         height: 10%;
     }
-    
+
     .stealth-btn-8 {
         top: 32%;
         left: 73%;
         width: 24%;
         height: 10%;
     }
-    
+
     /* 右下CTAボタン */
     .stealth-cta-btn {
         display: block;
@@ -471,47 +489,47 @@ body {
         z-index: 16;
         pointer-events: auto;
     }
-    
+
     .contact-form {
         padding: 70px 0 90px;
     }
-    
+
     .form-title {
         font-size: 30px;
         margin-bottom: 15px;
     }
-    
+
     .form-subtitle {
         font-size: 16px;
         margin-bottom: 40px;
     }
-    
+
     .form {
         padding: 35px 30px;
         border-radius: 20px;
     }
-    
+
     .form-group {
         margin-bottom: 25px;
     }
-    
+
     .form-group label {
         font-size: 15px;
     }
-    
+
     .checkbox-group {
         grid-template-columns: repeat(4, 1fr);
     }
-    
+
     .submit-button {
         padding: 22px;
         font-size: 18px;
     }
-    
+
     .button-text {
         font-size: 18px;
     }
-    
+
     .button-subtext {
         font-size: 12px;
     }
@@ -524,30 +542,30 @@ body {
     .container {
         max-width: 800px;
     }
-    
+
     .cta-button-link {
         height: 80px;
         max-width: 600px;
     }
-    
+
     .contact-form {
         padding: 80px 0 100px;
     }
-    
+
     .form-title {
         font-size: 34px;
     }
-    
+
     .form-subtitle {
         font-size: 16px;
     }
-    
+
     .form {
         padding: 45px 40px;
         max-width: 800px;
         margin: 0 auto;
     }
-    
+
     .form-group input,
     .form-group select,
     .form-group textarea {
@@ -562,16 +580,16 @@ body {
     .container {
         max-width: 900px;
     }
-    
+
     .contact-form {
         padding: 100px 0 120px;
     }
-    
+
     .form {
         max-width: 900px;
         padding: 50px;
     }
-    
+
     .form-title {
         font-size: 38px;
     }
@@ -584,13 +602,71 @@ body {
     .container {
         max-width: 1000px;
     }
-    
+
     .form {
         max-width: 1000px;
     }
-    
+
     .cta-button-link {
         height: 90px;
         max-width: 700px;
+    }
+}
+
+/* バリデーションエラーメッセージ */
+.error-message {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 5px;
+    font-weight: bold;
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+    border-color: #e74c3c;
+    background-color: #fdf0ef;
+}
+
+/* 送信成功メッセージ */
+.success-message-container {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fff;
+    border-radius: 16px;
+    animation: fadeIn 0.5s ease;
+}
+
+.success-icon {
+    font-size: 60px;
+    color: #27ae60;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.success-title {
+    font-size: 24px;
+    color: #004E89;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.success-text {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
