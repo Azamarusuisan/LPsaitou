@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>広告運用代行サービス アドサポ10</title>
+    <link rel="stylesheet" href="styles-mobile.css">
+</head>
+<body>
+    <!-- ヒーローセクション -->
+    <section class="lp-section">
+        <div class="lp-image-wrapper">
+            <picture>
+                <source media="(min-width: 768px)" srcset="assets/hero-image.png">
+                <img src="assets/mobile-hero.png" alt="その広告運用手数料、高すぎませんか？" class="lp-image">
+            </picture>
+            <a href="#contact-form" class="cta-button-link">まずは無料で資料請求する ></a>
+        </div>
+    </section>
+
+    <!-- お悩みセクション -->
+    <section class="lp-section">
+        <div class="lp-image-wrapper">
+            <picture>
+                <source media="(min-width: 768px)" srcset="assets/image1.png">
+                <img src="assets/mobile-problems.png" alt="こんなお悩みありませんか？" class="lp-image">
+            </picture>
+        </div>
+    </section>
+
+    <!-- 選ばれる理由セクション -->
+    <section class="lp-section section-reasons">
+        <div class="lp-image-wrapper">
+            <picture>
+                <source media="(min-width: 768px)" srcset="assets/image2.png">
+                <img src="assets/mobile-reasons.png" alt="アドサポ10が選ばれる3つの理由" class="lp-image">
+            </picture>
+            <!-- PC用ステルスボタン（広告媒体リスト） -->
+            <div class="stealth-buttons-grid">
+                <!-- 1行目 -->
+                <a href="https://ads.google.com" target="_blank" class="stealth-btn stealth-btn-1" aria-label="Google広告"></a>
+                <a href="https://promotionalads.yahoo.co.jp" target="_blank" class="stealth-btn stealth-btn-2" aria-label="Yahoo!広告"></a>
+                <a href="https://www.facebook.com/business" target="_blank" class="stealth-btn stealth-btn-3" aria-label="Meta広告"></a>
+                <a href="https://ads.twitter.com" target="_blank" class="stealth-btn stealth-btn-4" aria-label="X広告"></a>
+                <!-- 2行目 -->
+                <a href="https://www.linebiz.com" target="_blank" class="stealth-btn stealth-btn-5" aria-label="LINE広告"></a>
+                <a href="https://www.tiktok.com/business" target="_blank" class="stealth-btn stealth-btn-6" aria-label="TikTok広告"></a>
+                <a href="https://www.youtube.com/ads" target="_blank" class="stealth-btn stealth-btn-7" aria-label="YouTube広告"></a>
+                <a href="#contact-form" class="stealth-btn stealth-btn-8" aria-label="DSP広告"></a>
+            </div>
+            <!-- 右下のCTAボタン（PC用） -->
+            <a href="#contact-form" class="stealth-cta-btn" aria-label="今すぐ申し込む"></a>
+            <a href="#contact-form" class="cta-button-link">まずは無料で資料請求する ></a>
+        </div>
+    </section>
+
+    <!-- 導入実績セクション -->
+    <section class="lp-section">
+        <div class="lp-image-wrapper">
+            <picture>
+                <source media="(min-width: 768px)" srcset="assets/image3.png">
+                <img src="assets/mobile-cases.png" alt="導入実績・成功事例" class="lp-image">
+            </picture>
+            <a href="#contact-form" class="cta-button-link">まずは無料で資料請求する ></a>
+        </div>
+    </section>
+
+    <!-- お問い合わせフォーム -->
+    <section class="contact-form" id="contact-form">
+        <div class="container">
+            <h2 class="form-title">無料相談・資料請求</h2>
+            <p class="form-subtitle">まずはお気軽にご相談ください。<br>専門スタッフが丁寧にご対応いたします。</p>
+            
+            <form class="form" action="#" method="post">
+                <div class="form-group">
+                    <label for="company">会社名 <span class="required">必須</span></label>
+                    <input type="text" id="company" name="company" placeholder="例：株式会社サンプル" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name">お名前 <span class="required">必須</span></label>
+                    <input type="text" id="name" name="name" placeholder="例：山田 太郎" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">メールアドレス <span class="required">必須</span></label>
+                    <input type="email" id="email" name="email" placeholder="例：sample@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">電話番号</label>
+                    <input type="tel" id="phone" name="phone" placeholder="例：03-1234-5678">
+                </div>
+                
+                <div class="form-group">
+                    <label for="budget">月間広告予算 <span class="required">必須</span></label>
+                    <select id="budget" name="budget" required>
+                        <option value="">選択してください</option>
+                        <option value="~30">30万円未満</option>
+                        <option value="30-50">30万円〜50万円</option>
+                        <option value="50-100">50万円〜100万円</option>
+                        <option value="100-300">100万円〜300万円</option>
+                        <option value="300-500">300万円〜500万円</option>
+                        <option value="500+">500万円以上</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="media">現在利用中の広告媒体</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="media" value="google"> Google広告
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="media" value="yahoo"> Yahoo!広告
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="media" value="meta"> Meta広告
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="media" value="line"> LINE広告
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="media" value="x"> X広告
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="media" value="tiktok"> TikTok広告
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="media" value="youtube"> YouTube広告
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="media" value="other"> その他
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inquiry_type">お問い合わせ種別 <span class="required">必須</span></label>
+                    <select id="inquiry_type" name="inquiry_type" required>
+                        <option value="">選択してください</option>
+                        <option value="document">資料請求</option>
+                        <option value="consultation">無料相談</option>
+                        <option value="estimate">お見積り依頼</option>
+                        <option value="other">その他</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">ご相談内容・ご質問</label>
+                    <textarea id="message" name="message" rows="5" placeholder="現在のお悩みや、ご質問などをご記入ください"></textarea>
+                </div>
+                
+                <div class="form-group privacy-check">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="privacy" required>
+                        <a href="#" class="privacy-link">プライバシーポリシー</a>に同意する <span class="required">必須</span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="submit-button">
+                    <span class="button-text">無料で相談する</span>
+                    <span class="button-subtext">〜 今月残り3社限定 〜</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">© 2024 アドサポ10. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
