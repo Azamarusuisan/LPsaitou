@@ -43,7 +43,7 @@ const form = document.querySelector('.form');
 
 // チェックボックスの表示切り替えロジック
 document.querySelectorAll('.checkbox-label input[type="checkbox"]').forEach(input => {
-    input.addEventListener('change', function() {
+    input.addEventListener('change', function () {
         if (this.checked) {
             this.parentElement.classList.add('checked');
         } else {
@@ -55,13 +55,13 @@ document.querySelectorAll('.checkbox-label input[type="checkbox"]').forEach(inpu
 if (form) {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         // エラーリセット
         document.querySelectorAll('.error-message').forEach(el => el.remove());
         document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
-        
+
         let isValid = true;
-        
+
         // メディア選択の回収
         const selectedMedia = [];
         document.querySelectorAll('input[name="media"]:checked').forEach(cb => {
@@ -78,7 +78,7 @@ if (form) {
             privacy: document.querySelector('input[name="privacy"]'),
             media: selectedMedia
         };
-        
+
         // 必須チェックヘルパー関数
         const showError = (element, message) => {
             const errorDiv = document.createElement('span');
@@ -87,7 +87,7 @@ if (form) {
             element.classList.add('error');
             // チェックボックスの場合は親要素の末尾に追加
             if (element.type === 'checkbox') {
-                 element.closest('.checkbox-label').parentElement.appendChild(errorDiv);
+                element.closest('.checkbox-label').parentElement.appendChild(errorDiv);
             } else {
                 element.parentElement.appendChild(errorDiv);
             }
@@ -97,13 +97,13 @@ if (form) {
         // バリデーション実行
         if (!formData.company.value.trim()) showError(formData.company, '会社名を入力してください');
         if (!formData.name.value.trim()) showError(formData.name, 'お名前を入力してください');
-        
+
         if (!formData.email.value.trim()) {
             showError(formData.email, 'メールアドレスを入力してください');
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.value)) {
             showError(formData.email, '正しいメールアドレス形式で入力してください');
         }
-        
+
         if (!formData.budget.value) showError(formData.budget, '予算を選択してください');
         if (!formData.inquiry_type.value) showError(formData.inquiry_type, 'お問い合わせ種別を選択してください');
         if (!formData.privacy.checked) showError(formData.privacy, 'プライバシーポリシーへの同意が必要です');
@@ -123,24 +123,24 @@ if (form) {
                     </p>
                 </div>
             `;
-            
+
             form.style.display = 'none';
             const title = document.querySelector('.form-title');
             const subtitle = document.querySelector('.form-subtitle');
-            if(title) title.style.display = 'none';
-            if(subtitle) subtitle.style.display = 'none';
+            if (title) title.style.display = 'none';
+            if (subtitle) subtitle.style.display = 'none';
 
             formContainer.insertAdjacentHTML('beforeend', successHTML);
-            
+
             // データ送信ログ
-            console.log('Form Submitted:', {
+            console.log('Form Sending Data:', {
                 company: formData.company.value,
                 name: formData.name.value,
                 budget: formData.budget.value,
                 media: formData.media,
                 type: formData.inquiry_type.value
             });
-            
+
             // スクロール位置を調整
             document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
@@ -151,7 +151,7 @@ if (form) {
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
+
     // スクロール位置に応じた処理を追加可能
     lastScroll = currentScroll;
 });
