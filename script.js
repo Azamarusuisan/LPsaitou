@@ -40,6 +40,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // フォーム送信処理
 const form = document.querySelector('.form');
+
+// チェックボックスの表示切り替えロジック
+document.querySelectorAll('.checkbox-label input[type="checkbox"]').forEach(input => {
+    input.addEventListener('change', function() {
+        if (this.checked) {
+            this.parentElement.classList.add('checked');
+        } else {
+            this.parentElement.classList.remove('checked');
+        }
+    });
+});
+
 if (form) {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -49,6 +61,13 @@ if (form) {
         document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
         
         let isValid = true;
+        
+        // メディア選択の回収
+        const selectedMedia = [];
+        document.querySelectorAll('input[name="media"]:checked').forEach(cb => {
+            selectedMedia.push(cb.value);
+        });
+
         const formData = {
             company: document.getElementById('company'),
             name: document.getElementById('name'),
@@ -56,7 +75,8 @@ if (form) {
             phone: document.getElementById('phone'),
             budget: document.getElementById('budget'),
             inquiry_type: document.getElementById('inquiry_type'),
-            privacy: document.querySelector('input[name="privacy"]')
+            privacy: document.querySelector('input[name="privacy"]'),
+            media: selectedMedia
         };
         
         // 必須チェックヘルパー関数
@@ -91,7 +111,7 @@ if (form) {
         if (isValid) {
             // 送信成功UIへ切り替え
             const formContainer = form.parentElement; // .container inside .contact-form or similar
-            // フォーム自体を非表示にしてメッセージを表示、あるいはフォームの中身を書き換え
+            // フォーム自体を非表示にしてメッセージを表示
             const successHTML = `
                 <div class="success-message-container">
                     <span class="success-icon">✓</span>
@@ -99,14 +119,12 @@ if (form) {
                     <p class="success-text">
                         お問い合わせありがとうございます。<br>
                         担当者より3営業日以内にご連絡いたします。<br>
-                        ご入力いただいたメールアドレスへ確認メールをお送りしました。
+                        確認メールを ${formData.email.value} へ送信しました。
                     </p>
                 </div>
             `;
             
-            // フェードアウト効果などをつけるならここで
             form.style.display = 'none';
-            // タイトルなども非表示にする場合
             const title = document.querySelector('.form-title');
             const subtitle = document.querySelector('.form-subtitle');
             if(title) title.style.display = 'none';
@@ -114,10 +132,16 @@ if (form) {
 
             formContainer.insertAdjacentHTML('beforeend', successHTML);
             
-            // 実際はここでAPI送信などを行う
-            console.log('Form submitted successfully');
+            // データ送信ログ
+            console.log('Form Submitted:', {
+                company: formData.company.value,
+                name: formData.name.value,
+                budget: formData.budget.value,
+                media: formData.media,
+                type: formData.inquiry_type.value
+            });
             
-            // スクロール位置を調整（フォーム位置へ）
+            // スクロール位置を調整
             document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     });
