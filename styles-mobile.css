@@ -107,7 +107,7 @@ body {
 }
 
 .lp-image {
-    width: 120%;
+    width: 100%;
     height: auto;
     display: block;
     max-width: none;
@@ -116,7 +116,7 @@ body {
     vertical-align: top;
     border: none;
     outline: none;
-    margin: 0 -10%;
+    margin: 0;
     padding: 0;
     font-size: 0;
     line-height: 0;
@@ -124,8 +124,8 @@ body {
 
 /* お悩みセクションの画像調整（青枠削除のため強めにクロップ） */
 .section-problems .lp-image {
-    width: 120%;
-    margin: 0 -10%;
+    width: 100%;
+    margin: 0;
 }
 
 /* CTAボタンリンク */
