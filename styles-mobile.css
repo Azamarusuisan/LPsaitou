@@ -353,13 +353,17 @@ body {
     user-select: none;
 }
 
-/* Hide default checkbox but keep it accessible for tab focus */
+/* Hide default checkbox but keep it accessible/clickable via overlay */
 .checkbox-label input[type="checkbox"] {
     position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     margin: 0;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
 }
 
 /* Active State */
